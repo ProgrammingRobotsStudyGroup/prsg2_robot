@@ -1,0 +1,61 @@
+= prsg2_robot
+
+ROS launch files and configuration for the PRSG rev 2 robot.
+
+== Configuration for Your Robot
+
+=== IR Sensor Frames and Locations
+
+The YAML parameters in `launch/prsg2_controller.launch` and the URDF
+file in `urdf/prsg2_description.xacro` both define and use frame names
+for the IR sensors and the sensor locations. You will need to modify
+both of these files depending on how many sensors you have installed.
+
+=== Wheel Size and Separation
+
+Some of us are using 60mm wheels and some 70mm. In addition, the wheel
+separation may vary a little depending on the chassis. You will need
+to edit the YAML parameters in the launch file. Both of these values
+are in meters.
+
+For the robot using Darron's chassis:
+
+    wheel_diameter: 0.070
+    wheel_track: 0.200
+
+The `wheel_track` value for the wheel separation may vary a little, so
+measure it on your robot. I've found it's best to measure from the centers
+of the tires, rather than the inside or outside edges.
+
+=== ros_arduino_bridge Communication Style
+
+Some of us are using the Arduino UART and some are using the built-in
+I2C communication between the A-Star and the RPi. These parameters
+will need to change if you use I2C:
+
+For UART communication:
+
+    port: /dev/ttyAMA0
+    baud: 115200
+
+For I2C communication:
+
+    port: 1
+    baud: 57600
+
+== Using the Launch Files
+
+One way to launch the robot controller for teleop is to run the
+`prsg2_controller.launch` file like this:
+
+    roslaunch prsg2_robot launch/prsg2_controller.launch
+
+This sets up `ros_arduino_bridge` and publishes the frame transformations
+from the URDF. Any teleop node should be able to send `/cmd_vel` messages
+to drive the robot. In addition, all the IR sensors will publish `Range`
+messages.
+
+Or, if you want to send movement commands by-hand, the following command
+causes the robot to drive in a circle to the right.
+
+    rostopic pub -r 10 /cmd_vel geometry_msgs/Twist '{linear: {x: 0.2}, angular: {z: -0.1}}'

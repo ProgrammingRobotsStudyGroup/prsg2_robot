@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package format="2">
+  <name>prsg2_description</name>
+  <version>1.0.0</version>
+  <description>
+    This package implements a description of the PRSG rev 2 robot.
+  </description>
+  <author>Mark Rose</author>
+  <maintainer email="markrose@acm.org">Mark Rose</maintainer>
+  <url type="website">https://github.com/ProgrammingRobotsStudyGroup/prsg2_robot</url>
+  <url type="repository">https://github.com/ProgrammingRobotsStudyGroup/prsg2_robot.git</url>
+  <url type="bugtracker">https://github.com/ProgrammingRobotsStudyGroup/prsg2_robot/issues</url>
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

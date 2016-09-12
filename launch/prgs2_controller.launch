@@ -1,0 +1,21 @@
+<launch>
+
+    <arg name="urdf_file" default="$(find prsg2_robot)/urdf/prsg2_description.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro.py $(arg urdf_file)" />
+
+    <!-- Publish the robot state. -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+        <param name="publish_frequency" value="10.0"/>
+    </node>
+
+    <!-- Publish frame transformations for joint angles. -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="False" />
+        <param name="rate" value="10.0"/>
+    </node>
+
+    <node name="arduino" pkg="ros_arduino_python" type="arduino_node.py" output="screen">
+        <rosparam file="$(find prsg2_robot)/param/prsg2_params.yaml" />
+    </node>
+
+</launch>
