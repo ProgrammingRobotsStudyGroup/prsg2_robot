@@ -43,17 +43,27 @@ For I2C communication:
     port: 1
     baud: 57600
 
+== Building and Installing the Files
+
+You must run `catkin_make` once in order to install the package files into the proper places.
+
+    cd ~/catkin_ws
+    catkin_make
+    
 == Using the Launch Files
 
 One way to launch the robot controller for teleop is to run the
 `prsg2_controller.launch` file like this:
 
-    roslaunch prsg2_robot launch/prsg2_controller.launch
+    roslaunch prsg2_robot prsg2_controller.launch
 
 This sets up `ros_arduino_bridge` and publishes the frame transformations
 from the URDF. Any teleop node should be able to send `/cmd_vel` messages
 to drive the robot. In addition, all the IR sensors will publish `Range`
 messages.
+
+One possible teleop node is the `virtual_joystick.py` node in the
+`differential_drive` package.
 
 Or, if you want to send movement commands by-hand, the following command
 causes the robot to drive in a circle to the right.
