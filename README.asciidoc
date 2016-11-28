@@ -43,6 +43,22 @@ For I2C communication:
     port: 1
     baud: 57600
 
+== Packages you may need
+On the robot host machine:
+----------------------------
+sudo apt-get install liburdfdom-tools.
+sudo apt-get install ros-indigo-urdf
+sudo apt-get install ros-indigo-xacro
+sudo apt-get install ros-indigo-robot-state-publisher
+sudo apt-get install ros-indigo-joint-state-publisher
+----------------------------
+On RVIZ machine, you may need to install the packages listed just prior. You will also need:
+----------------------------
+sudo apt-get install ros-indigo-effort-controllers
+sudo apt-get install ros-indigo-rviz
+----------------------------
+
+
 == Building and Installing the Files
 
 You must run `catkin_make` once in order to install the package files into the proper places.
