@@ -3,7 +3,7 @@
     xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <arg name="urdf_file" default="$(find prsg2_robot)/urdf/prsg2_description.xacro" />
-    <param name="robot_description" command="$(find xacro)/xacro $(arg urdf_file)" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg urdf_file)" />
 
     <!-- Publish the robot state. -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
