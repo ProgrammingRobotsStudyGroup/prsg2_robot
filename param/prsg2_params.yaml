@@ -19,7 +19,7 @@ base_frame: base_link
 # === Robot drivetrain parameters
 wheel_diameter: 0.070
 wheel_track: 0.198
-encoder_resolution: 2449 # = 48*46.8512 from Pololu for 130rpm motors
+encoder_resolution: 2249 # = 48*46.8512 from Pololu for 130rpm motors
 gear_reduction: 1 # Can't use gear_reduction since it messes up motor ctl.
 motors_reversed: False
 
